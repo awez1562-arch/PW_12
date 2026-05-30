@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <EditTextPreference
+        app:key="player_name"
+        app:title="Имя игрока"
+        app:summary="Введите ваше имя"
+        app:useSimpleSummaryProvider="true"
+        app:defaultValue="Игрок"/>
+
+    <SwitchPreferenceCompat
+        app:key="sound_enabled"
+        app:title="Звук"
+        app:summary="Включить звуковые эффекты"
+        app:defaultValue="true"/>
+
+    <ListPreference
+        app:key="difficulty"
+        app:title="Сложность"
+        app:summary="Выберите уровень сложности"
+        app:entries="@array/difficulty_entries"
+        app:entryValues="@array/difficulty_values"
+        app:defaultValue="Средняя"
+        app:useSimpleSummaryProvider="true"/>
+
+</PreferenceScreen>

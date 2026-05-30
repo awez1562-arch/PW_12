@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:gravity="center_horizontal">
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="15dp"/>
+
+    <!-- === ЗАГОЛОВОК === -->
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="🐺 Лови яйца! 🥚"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="12dp"/>
+
+    <!-- === ПАНЕЛЬ: ЖИЗНИ И СЧЁТ === -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="16dp"
+        android:paddingHorizontal="8dp">
+
+        <!-- Жизни (цыплята) -->
+        <LinearLayout
+            android:id="@+id/livesContainer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="start">
+
+            <TextView
+                android:id="@+id/life1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🐣"
+                android:textSize="28sp"
+                android:layout_marginEnd="4dp"/>
+            <TextView
+                android:id="@+id/life2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🐣"
+                android:textSize="28sp"
+                android:layout_marginEnd="4dp"/>
+            <TextView
+                android:id="@+id/life3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🐣"
+                android:textSize="28sp"/>
+        </LinearLayout>
+
+        <!-- Счёт -->
+        <TextView
+            android:id="@+id/score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="4dp"
+            android:minWidth="60dp"
+            android:gravity="center"/>
+    </LinearLayout>
+
+    <!-- === ИГРОВОЕ ПОЛЕ === -->
+    <!-- Классическая схема: 2 дорожки сверху, 2 снизу, волк перемещается между позициями -->
+    <FrameLayout
+        android:id="@+id/gameField"
+        android:layout_width="280dp"
+        android:layout_height="200dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/game_field_bg">
+
+        <!-- Верхняя левая дорожка -->
+        <LinearLayout
+            android:id="@+id/trackTopLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|start"
+            android:layout_margin="12dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🐔"
+                android:textSize="26sp"/>
+            <TextView
+                android:id="@+id/eggTopLeft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="24sp"
+                android:layout_marginHorizontal="8dp"
+                android:minWidth="24dp"/>
+            <TextView
+                android:id="@+id/wolfTopLeft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="32sp"
+                android:minWidth="32dp"/>
+        </LinearLayout>
+
+        <!-- Верхняя правая дорожка -->
+        <LinearLayout
+            android:id="@+id/trackTopRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|end"
+            android:layout_margin="12dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+            <TextView
+                android:id="@+id/wolfTopRight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="32sp"
+                android:minWidth="32dp"/>
+            <TextView
+                android:id="@+id/eggTopRight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="24sp"
+                android:layout_marginHorizontal="8dp"
+                android:minWidth="24dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🐔"
+                android:textSize="26sp"/>
+        </LinearLayout>
+
+        <!-- Нижняя левая дорожка -->
+        <LinearLayout
+            android:id="@+id/trackBottomLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|start"
+            android:layout_margin="12dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🐔"
+                android:textSize="26sp"/>
+            <TextView
+                android:id="@+id/eggBottomLeft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="24sp"
+                android:layout_marginHorizontal="8dp"
+                android:minWidth="24dp"/>
+            <TextView
+                android:id="@+id/wolfBottomLeft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="32sp"
+                android:minWidth="32dp"/>
+        </LinearLayout>
+
+        <!-- Нижняя правая дорожка -->
+        <LinearLayout
+            android:id="@+id/trackBottomRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="12dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+            <TextView
+                android:id="@+id/wolfBottomRight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="32sp"
+                android:minWidth="32dp"/>
+            <TextView
+                android:id="@+id/eggBottomRight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="24sp"
+                android:layout_marginHorizontal="8dp"
+                android:minWidth="24dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🐔"
+                android:textSize="26sp"/>
+        </LinearLayout>
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/gameStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:layout_marginTop="16dp"
+        android:text=""
+        android:textSize="18sp"
+        android:gravity="center_vertical"/>
+
+    <GridLayout
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:columnCount="2">
+        <Button
+            android:id="@+id/btnUpLeft"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="↖️"
+            android:textSize="50dp"
+            android:backgroundTint="#E0E0E0"/>
+        <Button
+            android:id="@+id/btnUpRight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="↗️"
+            android:textSize="50dp"
+            android:backgroundTint="#E0E0E0"/>
+        <Button
+            android:id="@+id/btnDownLeft"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="↙️"
+            android:textSize="50dp"
+            android:backgroundTint="#E0E0E0"/>
+        <Button
+            android:id="@+id/btnDownRight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="↘️"
+            android:textSize="50dp"
+            android:backgroundTint="#E0E0E0"/>
+    </GridLayout>
+
+</LinearLayout>

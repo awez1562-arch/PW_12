@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="24dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Волк ловит яйца"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="32dp"/>
+
+    <Button
+        android:id="@+id/btnGame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Начать игру"
+        android:layout_marginBottom="12dp"/>
+
+    <Button
+        android:id="@+id/btnSettings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Настройки"
+        android:layout_marginBottom="12dp"/>
+
+    <Button
+        android:id="@+id/btnRecords"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Рекорды"
+        android:layout_marginBottom="24dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#CCCCCC"
+        android:layout_marginBottom="16dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Текущие настройки:"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp"/>
+
+    <TextView
+        android:id="@+id/tvSettingsSummary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Загрузка..."
+        android:background="#F5F5F5"
+        android:padding="12dp"/>
+</LinearLayout>
